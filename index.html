@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Buy Pure Organic Honey Online in India | Anima Honey</title>
+    <meta name="description" content="Buy pure organic honey online in India. Anima Honey offers raw, natural Litchi and Mustard honey sourced directly from beekeepers since 2002.">
+    <meta name="keywords" content="buy honey online India, pure honey India, organic honey benefits, raw honey India, litchi honey, mustard honey, natural honey, Anima Honey">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://animahoney.vercel.app/">
+
+    <!-- Open Graph -->
+    <meta property="og:title"       content="Buy Pure Organic Honey Online in India | Anima Honey">
+    <meta property="og:description" content="Buy pure organic raw honey online in India. Litchi and Mustard honey sourced directly from beekeepers since 2002.">
+    <meta property="og:image"       content="https://animahoney.vercel.app/public/img8.png">
+    <meta property="og:url"         content="https://animahoney.vercel.app/">
+    <meta property="og:type"        content="website">
+    <meta property="og:site_name"   content="Anima Honey">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="Buy Pure Organic Honey Online in India | Anima Honey">
+    <meta name="twitter:description" content="Raw, natural honey sourced directly from beekeepers. Order Litchi and Mustard honey online across India.">
+    <meta name="twitter:image"       content="https://animahoney.vercel.app//public/img8.png">
+
+    <link rel="icon" href="./public/icon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- All app logic (Firebase + everything else) as an ES module -->
+    <script type="module" src="script.js"></script>
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Organization","name":"Anima Honey","url":"https://animahoney.vercel.app/","logo":"https://animahoney.vercel.app/logo.png","description":"Pure organic raw honey from India since 2002","contactPoint":{"@type":"ContactPoint","email":"animahoney13@gmail.com","contactType":"customer support"}}
+    </script>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════ -->
+<nav class="flex justify-between items-center px-6 md:px-20 py-4 shadow-sm" role="navigation" aria-label="Main navigation">
+    <button id="hamburgerBtn" class="md:hidden text-2xl focus:outline-none text-gray-800" aria-label="Open menu">☰</button>
+    <div class="text-2xl font-bold flex items-center gap-2 cursor-pointer" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Anima Honey Home">
+        <img src="./public/logo.png" class="h-12 w-auto object-contain" alt="Anima Honey logo" loading="lazy"> Anima Honey
+    </div>
+    <ul class="hidden md:flex gap-1 font-medium text-gray-800 text-sm" role="list">
+        <li><a href="#home"    class="nav-link">Home</a></li>
+        <li><a href="#why-us" class="nav-link">Why Us</a></li>
+        <li><a href="#shop"   class="nav-link">Shop</a></li>
+        <li><a href="#about"  class="nav-link">About</a></li>
+        <li><a href="#blog"   class="nav-link">Blog</a></li>
+        <li><a href="#gallery" class="nav-link">Gallery</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <button id="signupBtn" class="bg-amber-500 text-white px-8 py-2 rounded-full font-semibold shadow-lg hover:bg-amber-600 transition" aria-label="Sign Up or Login">Sign Up / Login</button>
+</nav>
+
+<!-- ══════════════════════════════════════
+     AUTH MODAL  (password eye toggle)
+══════════════════════════════════════ -->
+<div id="authModal" class="fixed inset-0 bg-black/60 z-[200] hidden flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <div class="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl relative text-center">
+        <button onclick="toggleAuthModal(false)" class="absolute top-4 right-4 text-2xl leading-none" aria-label="Close">×</button>
+        <h2 id="authTitle" class="text-2xl font-bold mb-6">Login to Anima Honey</h2>
+        <input id="authEmail" type="email" placeholder="Email"
+               class="w-full border p-4 rounded-xl mb-4 outline-none focus:ring-2 ring-amber-500" autocomplete="email">
+
+        <!-- Password + eye toggle -->
+        <div class="relative mb-6">
+            <input id="authPass" type="password" placeholder="Password"
+                   class="w-full border p-4 pr-12 rounded-xl outline-none focus:ring-2 ring-amber-500"
+                   autocomplete="current-password">
+            <button type="button" id="eyeToggleBtn" onclick="togglePasswordVisibility()"
+                    class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-700 transition"
+                    aria-label="Toggle password visibility">
+                <!-- Eye open — shown when password is hidden -->
+                <svg id="eyeIconShow" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                </svg>
+                <!-- Eye crossed — shown when password is visible -->
+                <svg id="eyeIconHide" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.477 0-8.268-2.943-9.542-7a9.97 9.97 0 012.43-4.107M9.88 9.88a3 3 0 104.243 4.243M3 3l18 18"/>
+                </svg>
+            </button>
+        </div>
+
+        <button onclick="handleAuthAction()" id="authSubmit"
+                class="w-full bg-amber-500 text-white py-4 rounded-xl font-bold mb-4">Login</button>
+        <p class="text-center text-sm text-gray-500">
+            New to the hive?
+            <button onclick="toggleAuthType()" id="authToggleBtn" class="text-amber-600 font-bold">Sign Up</button>
+        </p>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     QR MODAL
+══════════════════════════════════════ -->
+<div id="qrModal" class="fixed inset-0 bg-black/60 z-[300] hidden flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Complete Order via QR">
+    <div class="bg-white rounded-3xl p-8 max-w-sm w-full shadow-2xl relative text-center">
+        <button onclick="toggleQRModal(false)" class="absolute top-4 right-4 text-2xl" aria-label="Close">×</button>
+        <h2 class="text-2xl font-bold mb-4">Complete Order 📱</h2>
+        <p class="text-sm text-gray-500 mb-6">Scan with your phone camera or continue on your browser.</p>
+        <div class="flex justify-center mb-6"><canvas id="qrcode"></canvas></div>
+        <p class="text-xs text-gray-400 uppercase tracking-widest font-bold mb-3">— OR —</p>
+        <button id="desktopWaBtn" class="w-full bg-gray-900 text-white py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 hover:bg-black transition">
+            <span>💬</span> Open WhatsApp Web
+        </button>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     LEGAL MODAL
+══════════════════════════════════════ -->
+<div id="legalModal" class="fixed inset-0 bg-black/60 z-[300] hidden flex items-center justify-center p-4" role="dialog" aria-modal="true">
+    <div class="bg-white rounded-3xl p-8 max-w-2xl w-full shadow-2xl relative flex flex-col max-h-[85vh]">
+        <button onclick="toggleLegalModal(false)" class="absolute top-4 right-4 text-2xl" aria-label="Close">×</button>
+        <h2 id="legalTitle" class="text-2xl font-bold mb-6 flex-shrink-0 border-b pb-2">Legal</h2>
+        <div id="legalContent" class="text-gray-600 text-sm space-y-4 overflow-y-auto pr-2 custom-scrollbar"></div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     FSSAI CERTIFICATE MODAL
+══════════════════════════════════════ -->
+<div id="fssaiModal" class="fixed inset-0 bg-black/70 z-[350] hidden flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="FSSAI Certificate">
+    <div class="bg-white rounded-3xl p-6 max-w-lg w-full shadow-2xl relative text-center">
+        <button onclick="toggleFssaiModal(false)" class="absolute top-4 right-4 text-2xl leading-none text-gray-600 hover:text-black transition" aria-label="Close FSSAI modal">×</button>
+        <h2 class="text-xl font-bold mb-4 text-gray-900">FSSAI Food Safety Certificate</h2>
+        <img src="./public/fssai_certificate.jpg" alt="Anima Honey FSSAI Food Safety Certificate"
+             class="w-full rounded-2xl border border-gray-100 shadow-sm" loading="lazy"
+             onerror="this.style.display='none';document.getElementById('fssaiPlaceholder').style.display='block'">
+        <div id="fssaiPlaceholder" class="hidden py-12 text-gray-400">
+            <div class="text-6xl mb-4">📜</div>
+            <p class="font-semibold text-gray-600">Certificate image coming soon</p>
+            <p class="text-sm mt-2">License No: XXXXXXXXXXXXXXXXX</p>
+        </div>
+        <p class="text-xs text-gray-400 mt-4">FSSAI License No: XXXXXXXXXXXXXXXXX</p>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     1. HERO
+══════════════════════════════════════ -->
+<section id="home" class="pt-20 pb-32 px-6 md:px-20" aria-label="Hero section">
+    <div id="random-hive" aria-hidden="true"></div>
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center relative z-10">
+        <div class="md:w-1/2 space-y-6 text-center md:text-left">
+            <p class="uppercase tracking-widest text-sm font-bold text-gray-800">Natural &amp; Organic Honey</p>
+            <h1 class="text-4xl md:text-6xl text-gray-900 leading-tight">Buy Pure Organic<br><span class="text-white">Honey Online</span><br>in India</h1>
+            <h2 class="text-xl md:text-2xl text-gray-700 font-semibold italic">Good Honey, Good Health</h2>
+            <p class="text-sm text-amber-700 font-medium bg-amber-100 inline-block px-4 py-1 rounded-full">🇮🇳 Available across India</p>
+            <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
+                <button onclick="smoothScrollTo('#shop')" class="bg-gray-900 text-white px-10 py-4 rounded-full font-bold hover:bg-black transition">Pre Order Now</button>
+                <button onclick="smoothScrollTo('#blog')" class="border-2 border-gray-900 text-gray-900 px-10 py-4 rounded-full font-bold hover:bg-gray-900 hover:text-white transition">Learn More</button>
+            </div>
+        </div>
+        <div class="md:w-1/2 mt-16 md:mt-0 relative flex justify-center">
+            <div class="relative inline-block">
+                <img src="./public/jar3.png" class="w-full max-w-md drop-shadow-2xl z-10 block" alt="Anima Honey jar – pure organic honey available in India" loading="eager">
+                <div class="absolute top-10 right-10 bee-float text-4xl z-20 pointer-events-none" aria-hidden="true">🐝</div>
+            </div>
+        </div>
+    </div>
+    <svg class="absolute bottom-0 left-0 w-full drip-divider z-10" viewBox="0 0 1440 120" fill="#FFFDF0" aria-hidden="true">
+        <path d="M0,32L60,42.7C120,53,240,75,360,74.7C480,75,600,53,720,48C840,43,960,53,1080,58.7C1200,64,1320,64,1380,64L1440,64L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"/>
+    </svg>
+</section>
+
+<!-- ══════════════════════════════════════
+     2. WHY BUY OUR HONEY
+══════════════════════════════════════ -->
+<section id="why-us" class="py-20 px-6 md:px-20 bg-amber-50/60 border-y border-amber-100" aria-label="Why buy our honey">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-14">
+            <h2 class="text-4xl font-bold text-gray-900">Why Buy Our Honey?</h2>
+            <div class="w-24 h-1 bg-amber-500 mx-auto mt-4 rounded-full"></div>
+            <p class="text-gray-500 mt-4 max-w-xl mx-auto">Discover the difference that pure, raw honey from India can make to your life and health.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6 text-gray-600 leading-relaxed">
+                <p>When you <strong>buy honey online in India</strong>, you deserve the assurance that what arrives at your door is 100% natural — no added sugar and no adulteration. At Anima Honey, we have been harvesting <strong>pure honey in India</strong> since 2002, working directly with beekeepers to bring you raw, unprocessed honey straight from the hive.</p>
+                <p>Our <strong>organic honey benefits</strong> go far beyond sweetness. Unlike commercially processed honey that is heated and filtered, our <strong>raw honey in India</strong> retains its natural enzymes, antioxidants, vitamins, and minerals exactly as nature intended. Every batch is tested for purity before it reaches your table.</p>
+                <p>From Litchi orchards in Bihar to mustard fields of Rajasthan, our monofloral honeys carry distinct flavors reflecting the biodiversity of India's incredible landscapes. When you choose Anima Honey, you're choosing transparency, sustainability, and the wellness of your family.</p>
+            </div>
+            <div class="bg-white rounded-3xl shadow-md p-8 border border-amber-100">
+                <h3 class="text-xl font-bold text-gray-900 mb-6">Key Benefits of Raw Honey</h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3"><span class="text-amber-500 text-xl mt-0.5">🍯</span><div><strong class="text-gray-800">Rich in Antioxidants</strong><p class="text-sm text-gray-500 mt-1">Raw honey is packed with polyphenols and flavonoids that fight free radicals and support immunity.</p></div></li>
+                    <li class="flex items-start gap-3"><span class="text-amber-500 text-xl mt-0.5">🌿</span><div><strong class="text-gray-800">Natural Energy Booster</strong><p class="text-sm text-gray-500 mt-1">A tablespoon of pure organic honey provides fast-acting natural energy — perfect before a workout.</p></div></li>
+                    <li class="flex items-start gap-3"><span class="text-amber-500 text-xl mt-0.5">🛡️</span><div><strong class="text-gray-800">Supports Gut Health</strong><p class="text-sm text-gray-500 mt-1">Natural enzymes in raw honey aid digestion, promote good gut bacteria, and soothe an irritated stomach.</p></div></li>
+                    <li class="flex items-start gap-3"><span class="text-amber-500 text-xl mt-0.5">✨</span><div><strong class="text-gray-800">Better Than Sugar</strong><p class="text-sm text-gray-500 mt-1">With a lower glycemic index than refined sugar, raw honey is a smarter, more nutritious sweetener.</p></div></li>
+                    <li class="flex items-start gap-3"><span class="text-amber-500 text-xl mt-0.5">🐝</span><div><strong class="text-gray-800">100% Pure, No Additives</strong><p class="text-sm text-gray-500 mt-1">Zero added sugar, zero heating, zero processing. Our honey is exactly as the bees made it.</p></div></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     3. PRODUCTS
+══════════════════════════════════════ -->
+<section id="shop" class="py-20 px-6 md:px-20 max-w-7xl mx-auto border-t border-amber-50 text-center" aria-label="Shop our honey products">
+    <div class="text-center mb-16">
+        <h2 class="text-4xl text-gray-900 font-bold">Our Products</h2>
+        <div class="w-24 h-1 bg-amber-500 mx-auto mt-4 rounded-full"></div>
+        <p class="text-gray-500 mt-4">Premium raw honey, available in 500g &amp; 1kg jars.</p>
+    </div>
+    <div id="product-grid"></div>
+</section>
+
+<!-- ══════════════════════════════════════
+     4. ABOUT
+══════════════════════════════════════ -->
+<section id="about" class="py-20 px-6 md:px-20 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16 border-t border-amber-50" aria-label="About Anima Honey">
+    <div class="md:w-1/2 flex justify-center order-2 md:order-1">
+        <div class="hexagon-frame shadow-2xl">
+            <div class="hexagon-inner">
+                <img src="./public/img2.jpeg" class="w-full h-full object-cover" alt="Beekeepers harvesting pure raw honey – Anima Honey farm" loading="lazy">
+            </div>
+        </div>
+    </div>
+    <div class="md:w-1/2 space-y-6 order-1 md:order-2">
+        <p class="text-amber-500 font-bold italic text-lg">Our Story</p>
+        <h2 class="text-4xl font-bold text-gray-900 leading-tight">Harvesting Nature's Gold<br>Since 2002</h2>
+        <p class="text-gray-600 leading-relaxed">Anima Honey was founded on a singular commitment to raw purity. We believe that the best honey isn't made in a factory — it is crafted by nature over thousands of hours in the hive. Our journey began with a deep respect for the bees and the delicate ecosystems they sustain. By nurturing the land and protecting our pollinators, we ensure that every jar delivered to your doorstep is as golden, liquid, and untainted as nature intended.</p>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     5. BLOG  (arrows, no "Read More")
+══════════════════════════════════════ -->
+<section id="blog" class="py-20 px-6 md:px-20 border-t border-amber-50 bg-amber-50/40" aria-label="Honey blog and articles">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-14">
+            <h2 class="text-4xl font-bold text-gray-900">From the Hive — Our Blog</h2>
+            <div class="w-24 h-1 bg-amber-500 mx-auto mt-4 rounded-full"></div>
+            <p class="text-gray-500 mt-4">Tips, benefits, and the sweet science of pure honey.</p>
+        </div>
+        <div class="relative">
+            <button onclick="slideBlog('prev')"
+                    class="absolute left-[-20px] top-1/2 -translate-y-1/2 z-20 bg-white shadow-xl p-4 rounded-full hover:bg-amber-50 transition"
+                    aria-label="Previous blog posts">❮</button>
+            <button onclick="slideBlog('next')"
+                    class="absolute right-[-20px] top-1/2 -translate-y-1/2 z-20 bg-white shadow-xl p-4 rounded-full hover:bg-amber-50 transition"
+                    aria-label="Next blog posts">❯</button>
+
+            <div class="blog-slider-container">
+                <div id="blog-grid" class="blog-scroll-inner">
+
+                    <article class="blog-card">
+                        <div class="blog-card-emoji" aria-hidden="true">🔬</div>
+                        <h3>How to Check Pure Honey at Home</h3>
+                        <p>Not sure if your honey is real? The water drop test, thumb test, and flame test can help you verify purity in minutes without any equipment.</p>
+                        <div class="blog-author"><span>By Anima Honey Team</span></div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="blog-card-emoji" aria-hidden="true">🌱</div>
+                        <h3>Benefits of Mustard Honey for Health</h3>
+                        <p>Sourced from the golden mustard fields of India, mustard honey is rich in glucosinolates and has powerful anti-inflammatory properties.</p>
+                        <div class="blog-author"><span>By Anima Honey Team</span></div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="blog-card-emoji" aria-hidden="true">🍬</div>
+                        <h3>Is Raw Honey Better Than Sugar?</h3>
+                        <p>Refined sugar spikes your blood glucose and offers zero nutrition. Raw honey has enzymes, minerals, and a lower glycemic index — here's why the switch matters.</p>
+                        <div class="blog-author"><span>By Anima Honey Team</span></div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="blog-card-emoji" aria-hidden="true">🌸</div>
+                        <h3>Benefits of Litchi Honey — India's Hidden Gem</h3>
+                        <p>Litchi honey from Bihar is one of the rarest and most aromatic honeys in India. Packed with vitamin C and natural antioxidants.</p>
+                        <div class="blog-author"><span>By Anima Honey Team</span></div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="blog-card-emoji" aria-hidden="true">🛡️</div>
+                        <h3>How Honey Boosts Your Immunity Naturally</h3>
+                        <p>From ancient Ayurveda to modern nutritional science, honey has long been revered as an immune booster. Learn how enzymes in raw honey create a natural antibacterial shield.</p>
+                        <div class="blog-author"><span>By Anima Honey Team</span></div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="blog-card-emoji" aria-hidden="true">🌙</div>
+                        <h3>Why You Should Eat Honey Before Bed</h3>
+                        <p>A teaspoon of raw honey before sleep can improve liver glycogen stores, reduce stress hormones, and enhance sleep quality.</p>
+                        <div class="blog-author"><span>By Anima Honey Team</span></div>
+                    </article>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     6. GALLERY
+══════════════════════════════════════ -->
+<section id="gallery" class="py-20 px-6 max-w-7xl mx-auto overflow-hidden text-center border-t border-amber-50" aria-label="Anima Honey photo gallery">
+    <div class="text-center mb-16">
+        <h2 class="text-4xl text-gray-900 font-bold">Our Gallery</h2>
+        <div class="w-24 h-1 bg-amber-500 mx-auto mt-4 rounded-full"></div>
+    </div>
+    <div class="relative group">
+        <button onclick="slideGallery('prev')" class="absolute left-[-20px] top-1/2 -translate-y-1/2 z-20 bg-white shadow-xl p-4 rounded-full hover:bg-amber-50 transition" aria-label="Previous gallery images">❮</button>
+        <button onclick="slideGallery('next')" class="absolute right-[-20px] top-1/2 -translate-y-1/2 z-20 bg-white shadow-xl p-4 rounded-full hover:bg-amber-50 transition" aria-label="Next gallery images">❯</button>
+        <div class="slider-container">
+            <div id="gallery-grid">
+                <div class="gallery-item-wrapper px-4"><img src="./public/img1.jpeg"  class="rounded-xl h-64 w-full object-cover shadow-sm" alt="Anima Honey beekeeper harvesting raw honey" loading="lazy"></div>
+                <div class="gallery-item-wrapper px-4"><img src="https://images.unsplash.com/photo-1473973266408-ed4e27abdd47?auto=format&fit=crop&w=400" class="rounded-xl h-64 w-full object-cover shadow-sm" alt="Golden pure honey flowing from a spoon" loading="lazy"></div>
+                <div class="gallery-item-wrapper px-4"><img src="./public/img4.jpeg"  class="rounded-xl h-64 w-full object-cover shadow-sm" alt="Natural honeycomb from Anima Honey farm" loading="lazy"></div>
+                <div class="gallery-item-wrapper px-4"><img src="./public/img5.jpeg"  class="rounded-xl h-64 w-full object-cover shadow-sm" alt="Organic honey jars ready for delivery across India" loading="lazy"></div>
+                <div class="gallery-item-wrapper px-4"><img src="./public/img6.jpeg"  class="rounded-xl h-64 w-full object-cover shadow-sm" alt="Bees on honeycomb at Anima Honey apiary" loading="lazy"></div>
+                <div class="gallery-item-wrapper px-4"><img src="./public/img7.jpeg"  class="rounded-xl h-64 w-full object-cover shadow-sm" alt="Raw honey extraction process at Anima Honey" loading="lazy"></div>
+                <div class="gallery-item-wrapper px-4"><img src="./public/img11.jpeg" class="rounded-xl h-64 w-full object-cover shadow-sm" alt="Litchi honey product closeup" loading="lazy"></div>
+                <div class="gallery-item-wrapper px-4"><img src="./public/img12.jpeg" class="rounded-xl h-64 w-full object-cover shadow-sm" alt="Mustard honey – pure and natural" loading="lazy"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     7. CONTACT  (hexagon background)
+══════════════════════════════════════ -->
+<section id="contact" class="contact-section py-20 px-6 border-y border-amber-100 text-center" aria-label="Contact Anima Honey">
+    <div id="contact-hive" aria-hidden="true"></div>
+    <div class="max-w-4xl mx-auto relative z-10">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">Connect With Our Hive</h2>
+        <p class="text-gray-600 mb-12">Have questions? We're here to help!</p>
+        <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+            <a href="https://instagram.com/anima_honey" target="_blank" rel="noopener noreferrer"
+               class="contact-btn flex flex-col items-center bg-white p-6 rounded-3xl shadow-md hover:shadow-xl w-72 border border-amber-100"
+               aria-label="Follow Anima Honey on Instagram">
+                <div class="bg-gradient-to-tr from-yellow-400 to-fuchsia-600 p-4 rounded-2xl text-white mb-4">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </div>
+                <p class="font-bold text-gray-800">Instagram</p>
+                <p class="text-amber-600 font-semibold text-sm">@anima_honey</p>
+            </a>
+            <a href="mailto:animahoney13@gmail.com"
+               class="contact-btn flex flex-col items-center bg-white p-6 rounded-3xl shadow-md hover:shadow-xl w-72 border border-amber-100"
+               aria-label="Email Anima Honey">
+                <div class="bg-red-500 p-4 rounded-2xl text-white mb-4">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l12-9.725v15.438h-24v-15.438l12 9.725z"/></svg>
+                </div>
+                <p class="font-bold text-gray-800">Gmail</p>
+                <p class="text-amber-600 font-semibold text-sm">animahoney13@gmail.com</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer class="bg-zinc-900 text-zinc-400 py-16 px-6 md:px-20" role="contentinfo">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 text-sm">
+
+        <!-- Brand -->
+        <div>
+            <img src="./public/logobg.jpg" class="h-12 w-auto object-contain rounded-3xl mb-3" alt="Anima Honey brand logo" loading="lazy">
+            <h3 class="text-2xl font-bold text-white mb-2">Anima Honey</h3>
+            <p>Pure, raw honey since 2002. Buy organic honey online in India.</p>
+        </div>
+
+        <!-- Company -->
+        <div>
+            <h4 class="text-white font-bold mb-6">Company</h4>
+            <ul class="space-y-4" role="list">
+                <li><a href="#about"   class="hover:text-amber-500 transition">Our Story</a></li>
+                <li><a href="#shop"    class="hover:text-amber-500 transition">Shop All</a></li>
+                <li><a href="#blog"    class="hover:text-amber-500 transition">Blog</a></li>
+                <li><a href="#gallery" class="hover:text-amber-500 transition">Gallery</a></li>
+            </ul>
+        </div>
+
+        <!-- Legal -->
+        <div>
+            <h4 class="text-white font-bold mb-4">Legal</h4>
+            <ul class="space-y-2" role="list">
+                <li><button onclick="openPrivacy()" class="hover:text-amber-500 transition text-left">Privacy Policy</button></li>
+                <li><button onclick="openTerms()"   class="hover:text-amber-500 transition text-left">Terms &amp; Conditions</button></li>
+                <li><button onclick="openRefund()"  class="hover:text-amber-500 transition text-left">Shipping &amp; Returns</button></li>
+            </ul>
+        </div>
+
+        <!-- Newsletter + FSSAI -->
+        <div>
+            <h4 class="text-white font-bold mb-4">Newsletter</h4>
+            <p class="text-xs text-zinc-500 mb-3">Get honey tips &amp; exclusive offers:</p>
+            <div class="flex mb-6">
+                <input id="newsletterEmail" type="email" placeholder="Your email"
+                       class="bg-zinc-800 p-3 rounded-l-lg w-full outline-none text-white focus:ring-2 ring-amber-500" autocomplete="email">
+                <button id="newsletterBtn" onclick="subscribeNewsletter()"
+                        class="bg-amber-500 text-white p-3 rounded-r-lg font-bold hover:bg-amber-600 transition"
+                        aria-label="Subscribe to newsletter">Join</button>
+            </div>
+
+            <!-- FSSAI Badge 
+            <button onclick="toggleFssaiModal(true)"
+                    class="fssai-badge flex items-center gap-3 bg-zinc-800 hover:bg-zinc-700 transition rounded-2xl px-4 py-3 w-full text-left"
+                    aria-label="View FSSAI Certificate">
+                <img src="./public/fssai_logo.png" alt="FSSAI logo" class="h-8 w-auto object-contain fssai-logo-img" loading="lazy"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="fssai-fallback-icon hidden h-8 w-8 bg-green-600 rounded-md items-center justify-center text-white text-xs font-bold flex-shrink-0">F</div>
+                <div class="min-w-0">
+                    <p class="text-white text-xs font-bold tracking-wide">FSSAI Certified</p>
+                    <p class="text-zinc-400 text-[10px] mt-0.5 truncate">Lic. No: XXXXXXXXXXXXXXXXX</p>
+                </div>
+                <svg class="ml-auto h-4 w-4 text-zinc-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+            </button>-->
+        </div>
+    </div>
+
+    <div class="text-center mt-16 pt-8 border-t border-zinc-800 text-sm">
+        © <span id="year"></span> Anima Honey. All rights reserved. | Pure Organic Honey Online India
+    </div>
+</footer>
+
+<!-- ══════════════════════════════════════
+     CART FAB
+══════════════════════════════════════ -->
+<button id="cartToggle" onclick="window.toggleCart(true)"
+        class="fixed bottom-8 right-8 z-[60] bg-amber-500 text-white p-5 rounded-full shadow-2xl cursor-pointer hover:bg-amber-600 transition"
+        aria-label="Open shopping cart">
+    <span class="text-2xl" aria-hidden="true">🛒</span>
+    <span id="cartCountBadge" class="absolute -top-1 -right-1 bg-gray-900 text-xs px-2 rounded-full">0</span>
+</button>
+
+<!-- ══════════════════════════════════════
+     CART PANEL
+══════════════════════════════════════ -->
+<aside id="cartPanel" class="fixed top-0 right-0 h-full w-full md:w-96 bg-white z-[120] shadow-2xl flex flex-col"
+       aria-label="Shopping cart" role="complementary">
+    <div class="p-6 border-b flex justify-between items-center bg-amber-50">
+        <h2 class="text-2xl font-bold text-gray-900">Your Cart</h2>
+        <button onclick="window.toggleCart(false)" class="text-3xl font-light leading-none" aria-label="Close cart">×</button>
+    </div>
+    <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-6 space-y-6"></div>
+    <div class="p-6 border-t bg-gray-50 space-y-4">
+        <div id="checkoutForm" class="hidden space-y-3 pb-2">
+            <input id="customerPhone" type="tel" placeholder="Your WhatsApp Number"
+                   class="w-full border p-3 rounded-xl outline-none focus:ring-2 ring-amber-500 text-sm" autocomplete="tel">
+            <button onclick="handleCheckout()"
+                    class="w-full bg-green-600 text-white py-3 rounded-xl font-bold text-sm hover:bg-green-700 transition">
+                Send Pre Order via WhatsApp
+            </button>
+        </div>
+        <div class="flex justify-between items-center">
+            <span class="font-medium text-gray-600">Subtotal:</span>
+            <span id="cartTotalPrice" class="text-2xl font-bold text-amber-600">₹0.00</span>
+        </div>
+        <button id="mainCheckoutBtn" onclick="showCheckoutForm()"
+                class="w-full bg-gray-900 text-white py-4 rounded-xl font-bold hover:bg-black transition text-sm">
+            Checkout
+        </button>
+    </div>
+</aside>
+<div id="cartOverlay" onclick="window.toggleCart(false)"
+     class="fixed inset-0 bg-black/50 z-[115] hidden opacity-0 transition-opacity duration-300"></div>
+
+<!-- Toast container -->
+<div id="toastContainer" class="fixed top-5 right-5 z-[999] space-y-3" role="status" aria-live="polite"></div>
+
+</body>
+</html>

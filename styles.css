@@ -1,0 +1,304 @@
+/* ============================================================
+   ANIMA HONEY — styles.css
+   ============================================================ */
+
+/* ── CSS Variables ── */
+:root {
+    --honey-yellow:       #FFC107;
+    --honey-light:        #FFFDF0;
+    --honey-dark:         #2D2D2D;
+    --honey-pattern-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100' fill='none' stroke='%238B4513' stroke-width='1' stroke-opacity='0.07'/%3E%3C/svg%3E");
+    --honey-pattern-dark:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100' fill='none' stroke='%235D2E0A' stroke-width='1.2' stroke-opacity='0.15'/%3E%3C/svg%3E");
+}
+
+/* ── Global ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--honey-light);
+    background-image: var(--honey-pattern-light);
+    overflow-x: hidden;
+}
+
+h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+/* ── Navigation ── */
+nav {
+    position: sticky;
+    top: 0;
+    background-color: rgba(255, 253, 240, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+.nav-link {
+    position: relative;
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: color 0.3s;
+}
+
+.nav-link:hover { color: white; }
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 0; height: 0;
+    background-color: #8B4513;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    transform: translate(-50%, -50%);
+    transition: width 0.4s, height 0.4s, opacity 0.4s;
+    z-index: -1;
+    opacity: 0;
+}
+
+.nav-link:hover::before { width: 100%; height: 100%; opacity: 1; }
+
+/* ── Hero ── */
+#home {
+    position: relative;
+    background-color: var(--honey-yellow);
+    z-index: 1;
+    overflow: hidden;
+}
+
+#home::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--honey-pattern-dark);
+    z-index: -1;
+    pointer-events: none;
+}
+
+#random-hive {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.random-hex {
+    position: absolute;
+    border: 1.5px solid rgba(93, 46, 10, 0.15);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    transform: rotate(15deg);
+}
+
+.drip-divider { position: absolute; bottom: 0; left: 0; width: 100%; z-index: 10; }
+
+/* ── Bee float ── */
+.bee-float { animation: floating 8s ease-in-out infinite; display: inline-block; }
+
+@keyframes floating {
+    0%, 100% { transform: translate(0, 0); }
+    50%       { transform: translate(-30px, 30px); }
+}
+
+/* ── Contact section — matches hero hexagon pattern ── */
+.contact-section {
+    position: relative;
+    background-color: var(--honey-light);
+    overflow: hidden;
+}
+
+.contact-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--honey-pattern-light);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Contact hive background hexagons */
+#contact-hive {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.contact-hex {
+    position: absolute;
+    border: 1.5px solid rgba(93, 46, 10, 0.12);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    transform: rotate(10deg);
+}
+
+/* Contact cards sit above the pattern */
+.contact-section .max-w-4xl { position: relative; z-index: 1; }
+
+.contact-btn { transition: box-shadow 0.3s, transform 0.2s; }
+.contact-btn:hover { transform: translateY(-4px); }
+
+/* ── About hexagon frame ── */
+.hexagon-frame {
+    width: 280px;
+    height: 320px;
+    background: var(--honey-yellow);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hexagon-inner {
+    width: 92%; height: 92%;
+    background: white;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    overflow: hidden;
+}
+
+/* ── Product cards ── */
+.btn-buy:active { transform: scale(0.95); background-color: var(--honey-dark); color: white; }
+.product-card-wrapper { display: flex; flex-direction: column; }
+
+/* ── Gallery slider ── */
+.slider-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 10px 0;
+}
+
+#gallery-grid {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: 2rem;
+}
+
+.gallery-item-wrapper {
+    flex: 0 0 calc(33.333% - 1.35rem);
+    min-width: calc(33.333% - 1.35rem);
+}
+
+/* ── Blog slider ── */
+.blog-slider-container {
+    overflow: hidden;       /* hides overflow — arrows drive scrolling */
+    padding: 10px 0 16px;
+}
+
+.blog-scroll-inner {
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    /* width is natural — JS controls transform */
+}
+
+.blog-card {
+    background: white;
+    border: 1px solid #fde68a;
+    border-radius: 1.5rem;
+    padding: 1.75rem;
+    width: 300px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.blog-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.1); transform: translateY(-4px); }
+
+.blog-card-emoji {
+    font-size: 2rem;
+    width: 56px; height: 56px;
+    background: #fef3c7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.blog-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1f2937;
+    line-height: 1.4;
+    font-family: 'Playfair Display', serif;
+}
+
+.blog-card p {
+    font-size: 0.825rem;
+    color: #6b7280;
+    line-height: 1.6;
+    flex: 1;
+}
+
+.blog-author {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    border-top: 1px solid #fef3c7;
+    padding-top: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+/* ── Cart panel ── */
+#cartPanel {
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#cartPanel.open { transform: translateX(0); }
+
+/* ── FSSAI badge in footer ── */
+.fssai-badge { cursor: pointer; }
+.fssai-logo-img { flex-shrink: 0; }
+
+/* ── Toast notifications ── */
+.toast {
+    min-width: 250px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    animation: slideIn 0.4s ease, fadeOut 0.4s ease 3s forwards;
+}
+
+.toast-success { background: #16a34a; }
+.toast-error   { background: #dc2626; }
+.toast-info    { background: #2563eb; }
+
+@keyframes slideIn { from { transform: translateX(120%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes fadeOut { to { opacity: 0; transform: translateX(120%); } }
+
+/* ── Custom scrollbar ── */
+.custom-scrollbar { scrollbar-width: thin; scrollbar-color: #FFC107 #fef3c7; }
+.custom-scrollbar::-webkit-scrollbar { width: 6px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: #fef3c7; border-radius: 4px; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: #FFC107; border-radius: 4px; }
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+    .gallery-item-wrapper { flex: 0 0 100%; min-width: 100%; }
+
+    #signupBtn {
+        width: 45px; height: 45px;
+        padding: 0 !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+    }
+
+    .blog-card { width: 260px; }
+}
+
+/* ── Why-us section — transparent so the body hex pattern shows through ── */
+.why-us-section {
+    background-color: transparent; /* body hex pattern visible at its natural 0.07 opacity */
+}
+
+/* ── Why-us highlights ── */
+#why-us ul li strong { color: #92400e; }

@@ -161,7 +161,7 @@ const products = [
     {
         id: 1,
         name: "Litchi Honey",
-        img: "./public/img8.png",
+        img: "/images/img8.png",
         variants: [
             { weight: "500g", price: 399.00 },
             { weight: "1kg",  price: 649.00 }
@@ -170,7 +170,7 @@ const products = [
     {
         id: 2,
         name: "Mustard Honey",
-        img: "./public/img10.jpeg",
+        img: "/images/img10.jpeg",
         variants: [
             { weight: "500g", price: 299.00 },
             { weight: "1kg",  price: 499.00 }
